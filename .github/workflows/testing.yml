@@ -1,0 +1,23 @@
+name: Testing
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run_tests:
+      name: Run tests
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+        - name: Composer dependencies
+          run: composer install --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+        - name: Configure matchers
+          uses: mheap/phpunit-matcher-action@v1
+        - name: Run Tests
+          run: ./vendor/bin/phpunit --teamcity -c tests/phpunit.xml
+          env:
+            XDEBUG_MODE: coverage
