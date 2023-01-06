@@ -24,6 +24,7 @@
             "portada" => new Route("index.php", true),
             "404" => new Route("404.php", true),
             "llistar-productes" => new Route("producte.php", true),
-            "info-producte" => new Route("infoproducte.php", true)
+            "info-producte" => new Route("infoproducte.php", true),
+            "guardar-registre" => new Route("registre_usuari.php", true)
         ];
     }
